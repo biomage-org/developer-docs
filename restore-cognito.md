@@ -3,7 +3,7 @@ For creating and executing backups, you can use the npm package called `cognito-
 (do `npm install cognito-backup-restore` to get the package)
 
 Required IAM permissions
-If you want to create a backup of the users you will need the permission - ListUsers
+If you want to create a backup of the users you will need the permission - `ListUsers`
 Restoring the users requires - `AdminCreateUser`
 There might be more roles required to do all the operations for getting and restoring users. If you need a permission added
 speak with Iva or Pol, who will add it through IAM.
@@ -13,7 +13,7 @@ Here do either 1 or 2 depending on the situation.
 
 1. In case there is no cognito user pool or the user pool is empty, we have weekly user backup which executes every sunday at 1am. 
 To find the latest users backup file you need to go to biomage-backups-production S3 bucket and find the latest object in the bucket. 
-There you can download the `data.json` file, which later will be used to import the users to the new bucket.
+There you can download the `data.json` file, which later will be used to import the users to the new/existing user pool.
 
 2. In case the users are still existing in a pool you can create a new backup file from the user pool, which can then be used to import users.
 Using the package `cognito-backup-restore` you can do `cbr backup`, which is an interactive command and will guide you to choose 
@@ -23,7 +23,7 @@ AWS region and user pool name for which you want to create a backup. (more info 
 
 If the user pool does not exist anymore you should create a new one. The user pool cloudformation is defined in the iac repository in the file called
 `cognito-case-insensitive.yaml`. You can trigger the Cloudformation to create the pool again by opening a new PR in the repository with the file modified
-(add a new line to the file). After merging, the user pool should be created again.
+(add a new line to the file). After merging, the stack will be synchronised and the user pool should be created again.
 
 **Restoring Users**
 Once you have a .json file with the users and an existing user pool you can use the npm package again to restore the users into a cognito pool.
