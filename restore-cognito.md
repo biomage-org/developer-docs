@@ -1,8 +1,8 @@
-Prerequisites 
+#Prerequisites 
 For creating and executing backups, you can use the npm package called `cognito-backup-restore` 
 (do `npm install cognito-backup-restore` to get the package)
 
-Required IAM permissions
+###Required IAM permissions
 If you want to create a backup of the users you will need the permission - `ListUsers`
 Restoring the users requires - `AdminCreateUser`
 There might be more roles required to do all the operations for getting and restoring users. If you need a permission added
@@ -11,13 +11,14 @@ speak with Iva or Pol, who will add it through IAM.
 **Downloading user data**
 Here do either 1 or 2 depending on the situation.
 
-1. In case there is no cognito user pool or the user pool is empty, we have weekly user backup which executes every sunday at 1am. 
-To find the latest users backup file you need to go to biomage-backups-production S3 bucket and find the latest object in the bucket. 
-There you can download the `data.json` file, which later will be used to import the users to the new/existing user pool.
+1. In case there is no cognito user pool or the user pool is empty 
+We have weekly user backup.  You will need to find the latest users backup file you need to go to biomage-backups-production-{accoundId} S3 bucket and find the latest object in the bucket. The objects names are the date they are created so using this you can find the latest one.
+After that download the `data.json` file inside that object. Later it will be used to import the users to the new/existing user pool.
 
-2. In case the users are still existing in a pool you can create a new backup file from the user pool, which can then be used to import users.
+2. In case the users are still existing in a pool
+Create a new backup file from the user pool, which can then be used to import users.
 Using the package `cognito-backup-restore` you can do `cbr backup`, which is an interactive command and will guide you to choose 
-AWS region and user pool name for which you want to create a backup. (more info [here](https://medium.com/geekculture/how-to-quickly-backup-and-restore-aws-cognito-user-pool-c1d820b927a8))
+AWS region and user pool name for which you want to create a backup. The command lists all the available options so it will be easy for you to choose the correct parameters. Use the arrow keys and enter for choosing. (more info [here](https://medium.com/geekculture/how-to-quickly-backup-and-restore-aws-cognito-user-pool-c1d820b927a8))
 
 **Create new user pool if required**
 
