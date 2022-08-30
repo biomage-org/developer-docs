@@ -3,10 +3,7 @@ For creating and executing backups, you can use the npm package called `cognito-
 (do `npm install cognito-backup-restore` to get the package)
 
 ###Required IAM permissions
-If you want to create a backup of the users you will need the permission - `ListUsers`
-Restoring the users requires - `AdminCreateUser`
-There might be more roles required to do all the operations for getting and restoring users. If you need a permission added
-speak with Iva or Pol, who will add it through IAM.
+To be able to do the user restoration you need to be in the engineering group in AWS. If you are a developer you should already have those permissions.  If you need to be added to the permission group, speak with Iva or Pol, who will add it through IAM.
 
 **Downloading user data**
 Here do either 1 or 2 depending on the situation.
