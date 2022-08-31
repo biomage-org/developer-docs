@@ -1,6 +1,7 @@
 # 1. Prerequisites 
-For creating and executing backups, you can use the npm package called `cognito-backup-restore` 
-(do `npm install cognito-backup-restore` to get the package)
+For creating and executing backups, you can use the npm package called `cognito-backup-restore`.
+To install:
+`npm install -g cognito-backup-restore`
 
 ### Required IAM permissions
 To be able to do the user restoration you need to be in the engineering group in AWS. If you are a developer you should already have those permissions.  If you need to be added to the permission group, speak with Iva or Pol, who will add it through IAM.
